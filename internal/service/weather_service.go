@@ -16,12 +16,6 @@ type WeatherService interface {
 	GetWeather(city string) (*model.Weather,error)
 	LogWeather(weather *model.Weather)error
 }
-type WeatherData struct {
-	Name string `json:"name"`
-	Main struct {
-		Kelvin float64 `json:"temp"`
-	} `json:"main"`
-}
 
 type weatherService struct{
 	weatherRepository repository.WeatherRepository
@@ -68,6 +62,13 @@ func validateWeatherData(weather *model.Weather) error {
 	}
 	return nil
 }
+type WeatherData struct {
+	Name string `json:"name"`
+	Main struct {
+		Kelvin float64 `json:"temp"`
+	} `json:"main"`
+}
+
 type apiConfig struct {
 	OpenWeatherMapApiKey string `json:"OpenWeatherMapApiKey"`
 }
